@@ -1,0 +1,8 @@
+package commands;
+
+public class Prohledej extends Prikaz{
+    @Override
+    public String provedeniPrikazu() {
+        return "";
+    }
+}
