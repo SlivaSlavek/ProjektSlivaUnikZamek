@@ -1,0 +1,28 @@
+Jak to funguje:  Vždy je číslo místnosti a pod ním název a pod ním popis místnosti, vše vždy jako samostatný řádek.
+1
+Vstup
+Menší starší místnost s temnou atmosférou, která má hlavní vchodové dveře.
+2
+Hlavní sál
+Velkolepá místnost plná drahého nábytku z luxusních materiálů. V místnosti se nenachází truhly, kde by mohly být předměty, tvoří však hlavní spojnici mezi ostatními místnostmi.
+3
+Lovecká místnost
+Místnost je plná loveckých trofejí a vycpaných zvířat, jsou v ní truhly, ve kterých se nachází předměty. Místnost vede jak do Hlavního, tak Rytířského sálu.
+4
+Rytířský sál
+V sále jsou brnění vedle brnění a trofeje vedle trofejí. V sále se nacházejí truhly s předměty a lze se z něj dostat do Hlavního sálu a Lovecké místnosti.
+5
+Malá komora
+Miniaturní místnost, ve které se nachází prach, pavučiny a truhla s předměty. Vede do Hlavního sálu.
+6
+Jídelní sál
+V této bílé místnosti je kromě dlouhého stolu se spoustou židlí i truhla s předměty. Místnost je propojená s Hlavním sálem.
+7
+Dlouhá temná chodba
+Do této chodby, plné pavučin a prachu, by nikdo nikdy dobrovolně nevkročil, avšak jedná se o jedinou přístupovou cestu do Čarodějovy věže. Vede z Hlavního sálu podzemím a je tak úzká, že se tam člověk sotva vejde.
+8
+Čarodějova věž
+Velmi důležitou místností je Čarodějova věž, kde se nachází čaroděj. Do místnosti se lze dostat pouze Dlouhou temnou chodbou. Místnost je staromódně vybavená a osvětlená krbem. V místnosti se nachází zamčené skříňky a šuplíky, ale čaroděj do nich nikoho nepustí.
+
+
+//TODO Upravit popisy místností
