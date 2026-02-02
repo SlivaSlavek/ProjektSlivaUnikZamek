@@ -10,6 +10,7 @@ public class SystemHry {
     private Mistnost[] mistnosti = new Mistnost[8];
     private ArrayList<NPC> npccka = new ArrayList<>();
     private Hrac hrac;
+    private ArrayList<Predmet> moznePredmety = new ArrayList<>();
 
     public void vypis(String text){
         System.out.println(text);
@@ -20,7 +21,7 @@ public class SystemHry {
     public void vygenerujStartHry(){
         vygenerujMistnosti();
         vygenerujNPC();
-
+        vygenerujPredmety();
     }
 
     private void vygenerujNPC() {
@@ -92,6 +93,46 @@ public class SystemHry {
         }
     }
 
+    private void vygenerujPredmety(){
+        FileReader fr = null;
+        try {
+            fr = new FileReader("predmety.txt");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        BufferedReader br = new BufferedReader(fr);
+        try {
+            if (Objects.equals(br.readLine(), "--KONEC!--")) {
+                return;
+            }
+            while (true) {
+                if (Objects.equals(br.readLine(), "--KONEC!--")) {
+                    return;
+                }
+                if (Objects.equals(br.readLine(), "--KONEC!--")) {
+                    return;
+                }
+                String radekJmeno =br.readLine();
+                if (Objects.equals(radekJmeno, "--KONEC!--")) {
+                    return;
+                }
+                String radekJedinecnost=br.readLine();
+                if (Objects.equals(radekJedinecnost, "--KONEC!--")){
+                    return;
+                }
+                boolean temp;
+                if (radekJedinecnost.toLowerCase().equals("true") || radekJedinecnost.toLowerCase().equals("pravda")){
+                    temp = true;
+                } else {
+                    temp=false;
+                }
+                moznePredmety.add(new Predmet(radekJmeno,temp));
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private void vygenerujMistnosti(){
         FileReader fr = null;
         try {
@@ -131,5 +172,9 @@ public class SystemHry {
 
     public ArrayList<NPC> getNpccka() {
         return npccka;
+    }
+
+    public ArrayList<Predmet> getMoznePredmety() {
+        return moznePredmety;
     }
 }

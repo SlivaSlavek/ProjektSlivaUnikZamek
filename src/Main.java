@@ -21,5 +21,8 @@ public class Main {
             System.out.println(systemHry.getNpccka().get(i));
         }
         System.out.println("Konec zkoušky z NPC generace..");
+        for (int i=0;i<systemHry.getMoznePredmety().size();i++){
+            System.out.println(systemHry.getMoznePredmety().get(i));
+        }
     }
 }

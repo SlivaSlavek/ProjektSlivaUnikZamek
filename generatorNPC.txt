@@ -20,4 +20,4 @@ Duch Dušan
 Bububu, boj se mě!!!!!
 null
 --KONEC!--
-=> Tento koncový řádek značí konec generování NPC. Musí být hned za posledním NPC, aby označil konec, jinak to fungovat nebude.
+=> Tento koncový řádek značí konec generování NPC. Musí být hned za posledním NPC, aby označil konec.
