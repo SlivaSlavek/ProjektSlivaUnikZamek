@@ -1,5 +1,5 @@
 package commands;
 
 public abstract class Prikaz {
-    public abstract String provedeniPrikazu();
+    public abstract String provedeniPrikazu(String string);
 }

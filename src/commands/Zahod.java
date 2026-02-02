@@ -2,7 +2,7 @@ package commands;
 
 public class Zahod extends Prikaz{
     @Override
-    public String provedeniPrikazu() {
+    public String provedeniPrikazu(String prikaz) {
         return "";
     }
 }

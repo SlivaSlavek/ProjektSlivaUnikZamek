@@ -1,16 +1,19 @@
+import commands.*;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class SystemHry {
     private Mistnost[] mistnosti = new Mistnost[8];
     private ArrayList<NPC> npccka = new ArrayList<>();
     private Hrac hrac;
     private ArrayList<Predmet> moznePredmety = new ArrayList<>();
+    private HashMap<String, Prikaz>mapaPrikazu=new HashMap<>();
+    private String dalsiUkol;
+
 
     public void vypis(String text){
         System.out.println(text);
@@ -23,6 +26,35 @@ public class SystemHry {
         vygenerujNPC();
         vygenerujPredmety();
     }
+
+
+
+    public void provedPrikaz(){
+        vlozPrikazyDoMapy();
+        Scanner scanner = new Scanner(System.in);
+        String napsano = scanner.nextLine();
+        String[] prikaz = napsano.split(" ",2);
+        if(mapaPrikazu.containsKey(prikaz[0].toLowerCase())){
+            mapaPrikazu.get(prikaz).provedeniPrikazu(prikaz[1]);
+        }
+
+    }
+
+    private void vlozPrikazyDoMapy(){
+        mapaPrikazu.put("akce", new Akce());
+        mapaPrikazu.put("jdi", new Jdi());
+        mapaPrikazu.put("konec",new Konec());
+        mapaPrikazu.put("mluv",new Mluv());
+        mapaPrikazu.put("napoveda",new Napoveda());
+        mapaPrikazu.put("pomoc",new Pomoc());
+        mapaPrikazu.put("prohledej",new Prohledej());
+        mapaPrikazu.put("vezmi",new Vezmi());
+        mapaPrikazu.put("zahod",new Zahod());
+    }
+
+
+
+
 
     private void vygenerujNPC() {
         FileReader fr = null;
