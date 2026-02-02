@@ -7,6 +7,7 @@ import java.util.List;
 
 public class SystemHry {
     private Mistnost[] mistnosti = new Mistnost[8];
+    private Hrac hrac;
 
     public void vypis(String text){
         System.out.println(text);
@@ -48,5 +49,9 @@ public class SystemHry {
 
     public Mistnost[] getMistnosti() {
         return mistnosti;
+    }
+
+    public Hrac getHrac() {
+        return hrac;
     }
 }
