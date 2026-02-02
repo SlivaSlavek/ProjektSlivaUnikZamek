@@ -1,0 +1,23 @@
+Zde se generují NPC. Při dodržení formátu jich může být neomezené množství... Formáte: Jméno Řeč pridelenaMistnost(=je statické, název brát z mistnosti.txt; pokud není, tak null)   //TODO Dopsat více pravidel pro tvorbu NPC + řeč postav (dialogy)
+
+1:
+Čaroděj
+Vítám tě tady, potřebuju pomoci.....
+Čarodějova věž
+
+2:
+Ropucha
+Čaroděj je ve věži, kváky kvák.     Jdi hnedka za ním, kváky kváky kvak.
+Vstup
+
+3:
+Duch Hluch
+Bububu, bububu, bubu!
+null
+
+4:
+Duch Dušan
+Bububu, boj se mě!!!!!
+null
+--KONEC!--
+=> Tento koncový řádek značí konec generování NPC. Musí být hned za posledním NPC, aby označil konec, jinak to fungovat nebude.

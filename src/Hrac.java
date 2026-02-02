@@ -18,4 +18,12 @@ public class Hrac {
     public void setPoloha(Mistnost poloha) {
         this.poloha = poloha;
     }
+
+    public String getJmeno() {
+        return jmeno;
+    }
+
+    public void setJmeno(String jmeno) {
+        this.jmeno = jmeno;
+    }
 }

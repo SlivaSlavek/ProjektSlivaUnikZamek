@@ -10,6 +10,18 @@ public class Mistnost {
     private Predmet predmet;
 
 
+    //TODO Upravit toString
+    @Override
+    public String toString() {
+        return "Mistnost{" +
+                "nazev='" + nazev + '\'' +
+                ", popis='" + popis + '\'' +
+                ", maPovolenySpawnNPC=" + maPovolenySpawnNPC +
+                ", maTruhlu=" + maTruhlu +
+                ", predmet=" + predmet +
+                '}';
+    }
+
     public String getNazev() {
         return nazev;
     }
