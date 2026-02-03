@@ -1,3 +1,5 @@
+package Hra;
+
 public class NPC {
     private String jmeno;
     private String dialog;
@@ -30,7 +32,7 @@ public class NPC {
     //TODO Upravit toString
     @Override
     public String toString() {
-        return "NPC{" +
+        return "Hra.NPC{" +
                 "jmeno='" + jmeno + '\'' +
                 ", dialog='" + dialog + '\'' +
                 ", pridelenaMistnost=" + pridelenaMistnost +

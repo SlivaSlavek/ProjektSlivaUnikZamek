@@ -1,3 +1,5 @@
+package Hra;
+
 import commands.*;
 
 import java.io.BufferedReader;
@@ -9,7 +11,7 @@ import java.util.*;
 public class SystemHry {
     private Mistnost[] mistnosti = new Mistnost[8];
     private ArrayList<NPC> npccka = new ArrayList<>();
-    private Hrac hrac;
+    private Hrac hrac=new Hrac();
     private ArrayList<Predmet> moznePredmety = new ArrayList<>();
     private HashMap<String, Prikaz>mapaPrikazu=new HashMap<>();
     private String dalsiUkol;
@@ -35,7 +37,9 @@ public class SystemHry {
         String napsano = scanner.nextLine();
         String[] prikaz = napsano.split(" ",2);
         if(mapaPrikazu.containsKey(prikaz[0].toLowerCase())){
-            mapaPrikazu.get(prikaz).provedeniPrikazu(prikaz[1]);
+            mapaPrikazu.get(prikaz).provedeniPrikazu(prikaz[1], this);
+        } else{
+            vypis("Příkaz " + prikaz[0] + " nebyl nalezen. Pro nabídku správných příkazů zadejte příkaz ´´napoveda´´ (bez diakritiky).");
         }
 
     }
@@ -50,6 +54,27 @@ public class SystemHry {
         mapaPrikazu.put("prohledej",new Prohledej());
         mapaPrikazu.put("vezmi",new Vezmi());
         mapaPrikazu.put("zahod",new Zahod());
+    }
+
+    public void npcRotace(){
+        Random random=new Random();
+        HashMap<NPC,NPC> nestatickaNPC=nestatickychNPC();
+        for (int i=0;i<nestatickaNPC.size();i++){
+            int cislo=random.nextInt(nestatickaNPC.size()+mistnosti.length);
+            if (cislo>= mistnosti.length){
+                //nestatickaNPC.get()
+            }
+        }
+    }
+
+    public HashMap<NPC,NPC> nestatickychNPC(){
+        HashMap<NPC,NPC> pohyblivychNPC=null;
+        for (int i=0;i<npccka.size();i++){
+            if (npccka.get(i).getPridelenaMistnost()==null){
+                pohyblivychNPC.put(npccka.get(i),npccka.get(i));
+            }
+        }
+        return pohyblivychNPC;
     }
 
 
@@ -97,7 +122,7 @@ public class SystemHry {
                     for (int i=0;i< mistnosti.length;i++){
                         if (Objects.equals(radekMist, mistnosti[i].getNazev())){
                             if (mistnosti[i].getNpc()!=null){
-                                vypis("V mistnosti " + mistnosti[i].getNazev() + " nemůže být NPC " + npcTemp.getJmeno() + ", protože tam již je NPC " + mistnosti[i].getNpc().getJmeno() + ".");
+                                vypis("V mistnosti " + mistnosti[i].getNazev() + " nemůže být Hra.NPC " + npcTemp.getJmeno() + ", protože tam již je Hra.NPC " + mistnosti[i].getNpc().getJmeno() + ".");
                             } else {
                                 npcTemp.setPridelenaMistnost(mistnosti[i]);
                                 mistnosti[i].setNpc(npcTemp);
@@ -105,7 +130,7 @@ public class SystemHry {
                             }
                         } else if (radekMist.toLowerCase().equals(mistnosti[i].getNazev().toLowerCase())) {
                             if (mistnosti[i].getNpc()!=null){
-                                vypis("V mistnosti " + mistnosti[i].getNazev() + " nemůže být NPC " + npcTemp.getJmeno() + ", protože tam již je NPC " + mistnosti[i].getNpc().getJmeno() + ".");
+                                vypis("V mistnosti " + mistnosti[i].getNazev() + " nemůže být Hra.NPC " + npcTemp.getJmeno() + ", protože tam již je Hra.NPC " + mistnosti[i].getNpc().getJmeno() + ".");
                             } else {
                                 npcTemp.setPridelenaMistnost(mistnosti[i]);
                                 mistnosti[i].setNpc(npcTemp);
@@ -115,7 +140,7 @@ public class SystemHry {
                     }
                     if (mistnostReady=false){
                         npcTemp.setPridelenaMistnost(null);
-                        vypis("Přidělená místnost " + radekMist + " NPC " + npcTemp.getJmeno() + " nenalezena. Přidělená místnost nebyla nastavená.");
+                        vypis("Přidělená místnost " + radekMist + " Hra.NPC " + npcTemp.getJmeno() + " nenalezena. Přidělená místnost nebyla nastavená.");
                     }
                 }
                 npccka.add(npcTemp);
@@ -208,5 +233,9 @@ public class SystemHry {
 
     public ArrayList<Predmet> getMoznePredmety() {
         return moznePredmety;
+    }
+
+    public String getDalsiUkol() {
+        return dalsiUkol;
     }
 }

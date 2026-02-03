@@ -1,3 +1,5 @@
+package Hra;
+
 import java.util.ArrayList;
 
 public class Mistnost {
@@ -13,7 +15,7 @@ public class Mistnost {
     //TODO Upravit toString
     @Override
     public String toString() {
-        return "Mistnost{" +
+        return "Hra.Mistnost{" +
                 "nazev='" + nazev + '\'' +
                 ", popis='" + popis + '\'' +
                 ", maPovolenySpawnNPC=" + maPovolenySpawnNPC +

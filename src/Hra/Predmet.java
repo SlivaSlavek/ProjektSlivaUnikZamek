@@ -1,3 +1,5 @@
+package Hra;
+
 public class Predmet {
     public String nazev;
     public boolean jenJednou;
@@ -26,7 +28,7 @@ public class Predmet {
     //TODO Upravit toString
     @Override
     public String toString() {
-        return "Predmet{" +
+        return "Hra.Predmet{" +
                 "nazev='" + nazev + '\'' +
                 ", jenJednou=" + jenJednou +
                 '}';

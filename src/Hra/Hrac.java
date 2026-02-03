@@ -1,3 +1,5 @@
+package Hra;
+
 public class Hrac {
     private String jmeno;
     private Predmet[] inv = new Predmet[2];

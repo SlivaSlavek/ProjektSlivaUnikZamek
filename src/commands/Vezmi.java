@@ -1,8 +1,10 @@
 package commands;
 
+import Hra.SystemHry;
+
 public class Vezmi extends Prikaz{
     @Override
-    public String provedeniPrikazu(String prikaz) {
+    public String provedeniPrikazu(String prikaz, SystemHry hra) {
         return "";
     }
 }

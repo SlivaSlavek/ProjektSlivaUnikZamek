@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import Hra.SystemHry;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,7 +17,7 @@ public class Main {
         for (int i=0;i<systemHry.getNpccka().size();i++){
             System.out.println(systemHry.getNpccka().get(i));
         }
-        System.out.println("Konec zkoušky z NPC generace..");
+        System.out.println("Konec zkoušky z Hra.NPC generace..");
         for (int i=0;i<systemHry.getMoznePredmety().size();i++){
             System.out.println(systemHry.getMoznePredmety().get(i));
         }
