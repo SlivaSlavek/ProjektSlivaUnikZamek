@@ -15,6 +15,7 @@ public class SystemHry {
     private ArrayList<Predmet> moznePredmety = new ArrayList<>();
     private HashMap<String, Prikaz>mapaPrikazu=new HashMap<>();
     private String dalsiUkol;
+    private boolean konec=false;
 
 
     public void vypis(String text){
@@ -27,6 +28,7 @@ public class SystemHry {
         vygenerujMistnosti();
         vygenerujNPC();
         vygenerujPredmety();
+        //TODO Generování předmětů do místností
     }
 
 
@@ -35,6 +37,9 @@ public class SystemHry {
         vlozPrikazyDoMapy();
         Scanner scanner = new Scanner(System.in);
         String napsano = scanner.nextLine();
+        if (!napsano.contains(" ")){
+            napsano=napsano+"  ";
+        }
         String[] prikaz = napsano.split(" ",2);
         if(mapaPrikazu.containsKey(prikaz[0].toLowerCase())){
             mapaPrikazu.get(prikaz).provedeniPrikazu(prikaz[1], this);
@@ -58,23 +63,45 @@ public class SystemHry {
 
     public void npcRotace(){
         Random random=new Random();
-        HashMap<NPC,NPC> nestatickaNPC=nestatickychNPC();
+        odendejNPCZMistnosti();
+        ArrayList<Mistnost>povoleneMistnost=misnostiProNPC();
+        ArrayList<NPC> nestatickaNPC=nestatickychNPC();
         for (int i=0;i<nestatickaNPC.size();i++){
-            int cislo=random.nextInt(nestatickaNPC.size()+mistnosti.length);
-            if (cislo>= mistnosti.length){
-                //nestatickaNPC.get()
+            int cislo=random.nextInt(nestatickaNPC.size()+povoleneMistnost.size()+2);
+            if (cislo< povoleneMistnost.size()){
+                if(povoleneMistnost.get(cislo).getNpc()==null) {
+                    povoleneMistnost.get(cislo).setNpc(nestatickaNPC.get(i));
+                }
             }
         }
     }
 
-    public HashMap<NPC,NPC> nestatickychNPC(){
-        HashMap<NPC,NPC> pohyblivychNPC=null;
+    public ArrayList<NPC> nestatickychNPC(){
+        ArrayList<NPC> pohyblivychNPC=null;
         for (int i=0;i<npccka.size();i++){
             if (npccka.get(i).getPridelenaMistnost()==null){
-                pohyblivychNPC.put(npccka.get(i),npccka.get(i));
+                pohyblivychNPC.add(npccka.get(i));
             }
         }
         return pohyblivychNPC;
+    }
+
+    public void odendejNPCZMistnosti(){
+        for (int i =0;i< mistnosti.length;i++){
+            if (mistnosti[i].getNpc().getPridelenaMistnost()==null){
+                mistnosti[i].setNpc(null);
+            }
+        }
+    }
+
+    public ArrayList<Mistnost> misnostiProNPC(){
+        ArrayList<Mistnost>msnsti=new ArrayList<>();
+        for (int i=0;i<mistnosti.length;i++) {
+            if (mistnosti[i].isMaPovolenySpawnNPC()){
+                msnsti.add(mistnosti[i]);
+            }
+        }
+        return msnsti;
     }
 
 
@@ -237,5 +264,13 @@ public class SystemHry {
 
     public String getDalsiUkol() {
         return dalsiUkol;
+    }
+
+    public boolean isKonec() {
+        return konec;
+    }
+
+    public void setKonec(boolean konec) {
+        this.konec = konec;
     }
 }

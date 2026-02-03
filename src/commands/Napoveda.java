@@ -5,6 +5,7 @@ import Hra.SystemHry;
 public class Napoveda extends Prikaz{
     @Override
     public String provedeniPrikazu(String prikaz, SystemHry hra) {
-        return "";
+        return "Napoveda";
+        //TODO Vypsat nápovědu příkazů a k čemu jaký slouží
     }
 }
