@@ -266,6 +266,10 @@ public class SystemHry {
         return dalsiUkol;
     }
 
+    public void setDalsiUkol(String dalsiUkol) {
+        this.dalsiUkol = dalsiUkol;
+    }
+
     public boolean isKonec() {
         return konec;
     }

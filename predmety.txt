@@ -1,4 +1,4 @@
-Zde se generují předměty. Při dodržení formátu jich může být neomezené množství druhů... Formát: Název MůžeBytJenJednou(boolean)   //TODO Dopsat více pravidel pro tvorbu predmetu + jich přidat více
+Zde se generují předměty. Při dodržení formátu jich může být neomezené množství druhů... První a druhý jsou ty, co hráč musí povinně najít. Formát: Název MůžeBytJenJednou(boolean)   //TODO Dopsat více pravidel pro tvorbu predmetu + jich přidat více
 
 1:
 Velký starý klíč
