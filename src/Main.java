@@ -2,7 +2,10 @@ import Hra.SystemHry;
 
 public class Main {
     public static void main(String[] args) {
-        //Testování:
+        SystemHry systemHry=new SystemHry();
+        systemHry.hrani();
+
+        /*//Testování:
         SystemHry systemHry=new SystemHry();
         systemHry.vygenerujStartHry();
         for (int i=0;i<8;i++){
@@ -21,5 +24,7 @@ public class Main {
         for (int i=0;i<systemHry.getMoznePredmety().size();i++){
             System.out.println(systemHry.getMoznePredmety().get(i));
         }
+
+         */
     }
 }

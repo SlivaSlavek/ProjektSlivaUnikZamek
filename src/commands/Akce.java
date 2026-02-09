@@ -64,7 +64,7 @@ public class Akce extends Prikaz{
                 } else {
                     if (hra.getHrac().getInv()[0]==hra.getMoznePredmety().get(0)||hra.getHrac().getInv()[1]==hra.getMoznePredmety().get(0)){
                         hra.setKonec(true);
-                        return "";
+                        return "Vyhráváš!! Gratuluji! Toto je konec hry!";
                     } else {
                         return "Daný předmět není v inventáři.";
                     }

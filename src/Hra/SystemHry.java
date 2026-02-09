@@ -14,8 +14,22 @@ public class SystemHry {
     private Hrac hrac=new Hrac();
     private ArrayList<Predmet> moznePredmety = new ArrayList<>();
     private HashMap<String, Prikaz>mapaPrikazu=new HashMap<>();
-    private String dalsiUkol;
+    private String dalsiUkol = "Zatím nemáte žádný úkol.";
     private boolean konec=false;
+
+
+
+    public void hrani(){
+        vygenerujStartHry();
+        hlavniLoop();
+    }
+
+
+    private void hlavniLoop(){
+        while (!isKonec()){
+            provedPrikaz();
+        }
+    }
 
 
     public void vypis(String text){
@@ -23,11 +37,11 @@ public class SystemHry {
     }
 
 
-
     public void vygenerujStartHry(){
         vygenerujMistnosti();
         vygenerujNPC();
         vygenerujPredmety();
+        hrac.setPoloha(mistnosti[0]);
         //TODO Generování předmětů do místností
     }
 
@@ -42,7 +56,7 @@ public class SystemHry {
         }
         String[] prikaz = napsano.split(" ",2);
         if(mapaPrikazu.containsKey(prikaz[0].toLowerCase())){
-            mapaPrikazu.get(prikaz).provedeniPrikazu(prikaz[1], this);
+            vypis(mapaPrikazu.get(prikaz[0]).provedeniPrikazu(prikaz[1], this));
         } else{
             vypis("Příkaz " + prikaz[0] + " nebyl nalezen. Pro nabídku správných příkazů zadejte příkaz ´´napoveda´´ (bez diakritiky).");
         }
