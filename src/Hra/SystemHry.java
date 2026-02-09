@@ -38,6 +38,14 @@ public class SystemHry {
         vygenerujMistnosti();
         vygenerujNPC();
         vygenerujPredmety();
+        if (jeSave()) {
+            Scanner scannerr=new Scanner(System.in);
+            vypis("Bylo nalezeno uložení hry. Pokud chcete novou hru, napiště 0 jinak jakékoliv jiné ČÍSLO pro načtění uložení.");
+            if (scannerr.nextInt()!=0){
+                nacteniUlozeneHry();
+                return;
+            }
+        }
         hrac.setPoloha(mistnosti[0]);
         //TODO Generování předmětů do místností
     }
@@ -122,6 +130,7 @@ public class SystemHry {
             fw.write("--V tomto souboru nic neupravovat, pouze pro smazání uložení změntě na 2. řádku ´´uloženo´´ na ´´neuloženo´´ (dělejte například u změn ve vstupních souborech)--");
             fw.write("ulozeno");
             fw.write(dalsiUkol);
+            fw.write(hrac.getPoloha().getNazev());
             fw.write(hrac.getInv()[0].getNazev());
             fw.write(hrac.getInv()[1].getNazev());
             for (int i =0;i<mistnosti.length;i++){
@@ -129,6 +138,73 @@ public class SystemHry {
                     fw.write(mistnosti[i].getPredmet().getNazev());
                 } else {
                     fw.write("null");
+                }
+            }
+            fw.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private boolean jeSave(){
+        FileReader fr = null;
+        try {
+            fr=new FileReader("ulozeni.txt");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        BufferedReader br=new BufferedReader(fr);
+        try {
+            br.readLine();
+            if (Objects.equals(br.readLine(), "ulozeno")) {
+                return true;
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
+
+    private void nacteniUlozeneHry(){
+        FileReader fr = null;
+        try {
+            fr=new FileReader("ulozeni.txt");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        BufferedReader br=new BufferedReader(fr);
+        try {
+            br.readLine();
+            if (Objects.equals(br.readLine(), "ulozeno")){
+                dalsiUkol=br.readLine();
+                String polohaa=br.readLine();
+                for (int i=0;i<mistnosti.length;i++){
+                    if (Objects.equals(mistnosti[i].getNazev(), polohaa)){
+                        hrac.setPoloha(mistnosti[i]);
+                    }
+                }
+                if (hrac.getPoloha()==null){
+                    hrac.setPoloha(mistnosti[0]);
+                }
+                String predmet1=br.readLine();
+                for (int i=0;i<moznePredmety.size();i++){
+                    if (Objects.equals(moznePredmety.get(i).getNazev(), predmet1)){
+                        hrac.getInv()[0]=moznePredmety.get(i);
+                    }
+                }
+                String predmet2= br.readLine();
+                for (int i=0;i<moznePredmety.size();i++){
+                    if (Objects.equals(moznePredmety.get(i).getNazev(), predmet2)){
+                        hrac.getInv()[1]=moznePredmety.get(i);
+                    }
+                }
+                for (int i=0;i<mistnosti.length;i++){
+                    String predmett=br.readLine();
+                    for (int j=0;i<moznePredmety.size();j++){
+                        if (Objects.equals(moznePredmety.get(j).getNazev(), predmett)){
+                            mistnosti[i].setPredmet(moznePredmety.get(j));
+                        }
+                    }
                 }
             }
         } catch (IOException e) {
