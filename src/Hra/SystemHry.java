@@ -12,6 +12,8 @@ public class SystemHry {
     private ArrayList<Predmet> moznePredmety = new ArrayList<>();
     private HashMap<String, Prikaz>mapaPrikazu=new HashMap<>();
     private String dalsiUkol = "Zatím nemáte žádný úkol.";
+    private boolean jeMainPredmet1 = false;
+    private boolean jeMainPredmet2 = false;
     private boolean konec=false;
 
 
@@ -40,14 +42,14 @@ public class SystemHry {
         vygenerujPredmety();
         if (jeSave()) {
             Scanner scannerr=new Scanner(System.in);
-            vypis("Bylo nalezeno uložení hry. Pokud chcete novou hru, napiště 0 jinak jakékoliv jiné ČÍSLO pro načtění uložení.");
+            vypis("Bylo nalezeno uložení hry. Pokud chcete novou hru, napiště 0 jinak jakékoliv jiné ČÍSLO pro načtění uložené hry.");
             if (scannerr.nextInt()!=0){
                 nacteniUlozeneHry();
                 return;
             }
         }
         hrac.setPoloha(mistnosti[0]);
-        //TODO Generování předmětů do místností
+        rozmistovaniPredmetu();
     }
 
 
@@ -123,6 +125,28 @@ public class SystemHry {
         return msnsti;
     }
 
+    public void rozmistovaniPredmetu(){
+        for (int i=0;i< mistnosti.length;i++){
+            if (mistnosti[i].getPredmet()!=null) {
+                Random random = new Random();
+                int cislo= random.nextInt(0,moznePredmety.size()-1);
+                if (isJeMainPredmet1()&&cislo==0){
+                    cislo= random.nextInt(1, moznePredmety.size()-1);
+                }
+                if (isJeMainPredmet2()&&cislo==1){
+                    cislo= random.nextInt(2, moznePredmety.size()-1);
+                }
+                if (cislo==0){
+                    jeMainPredmet1=true;
+                } else if (cislo==1) {
+                    jeMainPredmet2=true;
+                }
+                mistnosti[i].setPredmet(moznePredmety.get(cislo));
+                mistnosti[i].setTruhlaOtevrena(false);
+            }
+        }
+    }
+
     public void ulozeniHry(){
         FileWriter fw = null;
         try {
@@ -131,6 +155,16 @@ public class SystemHry {
             fw.write("ulozeno");
             fw.write(dalsiUkol);
             fw.write(hrac.getPoloha().getNazev());
+            if (jeMainPredmet1){
+                fw.write("true");
+            } else{
+                fw.write("false");
+            }
+            if (jeMainPredmet2){
+                fw.write("true");
+            } else{
+                fw.write("false");
+            }
             fw.write(hrac.getInv()[0].getNazev());
             fw.write(hrac.getInv()[1].getNazev());
             for (int i =0;i<mistnosti.length;i++){
@@ -185,6 +219,16 @@ public class SystemHry {
                 }
                 if (hrac.getPoloha()==null){
                     hrac.setPoloha(mistnosti[0]);
+                }
+                if (Objects.equals(br.readLine(), "true")){
+                    jeMainPredmet1=true;
+                } else {
+                    jeMainPredmet1=false;
+                }
+                if (Objects.equals(br.readLine(), "true")){
+                    jeMainPredmet2=true;
+                } else {
+                    jeMainPredmet2=false;
                 }
                 String predmet1=br.readLine();
                 for (int i=0;i<moznePredmety.size();i++){
@@ -384,5 +428,21 @@ public class SystemHry {
 
     public void setKonec(boolean konec) {
         this.konec = konec;
+    }
+
+    public boolean isJeMainPredmet1() {
+        return jeMainPredmet1;
+    }
+
+    public void setJeMainPredmet1(boolean jeMainPredmet1) {
+        this.jeMainPredmet1 = jeMainPredmet1;
+    }
+
+    public boolean isJeMainPredmet2() {
+        return jeMainPredmet2;
+    }
+
+    public void setJeMainPredmet2(boolean jeMainPredmet2) {
+        this.jeMainPredmet2 = jeMainPredmet2;
     }
 }

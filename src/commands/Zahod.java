@@ -8,9 +8,19 @@ public class Zahod extends Prikaz{
     @Override
     public String provedeniPrikazu(String prikaz, SystemHry hra) {
         if(Objects.equals(prikaz.toLowerCase(), hra.getHrac().getInv()[0].getNazev().toLowerCase())){
+            if (Objects.equals(hra.getHrac().getInv()[0].getNazev(), hra.getMoznePredmety().get(0).getNazev())){
+                hra.setJeMainPredmet1(false);
+            } else if (Objects.equals(hra.getHrac().getInv()[0].getNazev(), hra.getMoznePredmety().get(1).getNazev())) {
+                hra.setJeMainPredmet2(false);
+            }
             hra.getHrac().getInv()[0]=null;
             return "Předmět " + prikaz + " byl nenávratně zahozen.";
         } else if(Objects.equals(prikaz.toLowerCase(), hra.getHrac().getInv()[1].getNazev().toLowerCase())){
+            if (Objects.equals(hra.getHrac().getInv()[1].getNazev(), hra.getMoznePredmety().get(0).getNazev())){
+                hra.setJeMainPredmet1(false);
+            } else if (Objects.equals(hra.getHrac().getInv()[1].getNazev(), hra.getMoznePredmety().get(1).getNazev())) {
+                hra.setJeMainPredmet2(false);
+            }
             hra.getHrac().getInv()[1]=null;
             return "Předmět " + prikaz + " byl nenávratně zahozen.";
         } else {

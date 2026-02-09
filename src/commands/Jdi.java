@@ -9,6 +9,7 @@ public class Jdi extends Prikaz{
             if (prikaz.toLowerCase().equals(hra.getHrac().getPoloha().getSousediciMistnosti().get(i).getNazev().toLowerCase())){
                 hra.getHrac().setPoloha(hra.getHrac().getPoloha().getSousediciMistnosti().get(i));
                 hra.npcRotace();
+                hra.rozmistovaniPredmetu();
                 return "Hráč přešel do místnosti " + hra.getHrac().getPoloha().getNazev();
             }
         }
