@@ -2,10 +2,7 @@ package Hra;
 
 import commands.*;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class SystemHry {
@@ -116,6 +113,27 @@ public class SystemHry {
             }
         }
         return msnsti;
+    }
+
+    public void ulozeniHry(){
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter("ulozeni.txt");
+            fw.write("--V tomto souboru nic neupravovat, pouze pro smazání uložení změntě na 2. řádku ´´uloženo´´ na ´´neuloženo´´ (dělejte například u změn ve vstupních souborech)--");
+            fw.write("ulozeno");
+            fw.write(dalsiUkol);
+            fw.write(hrac.getInv()[0].getNazev());
+            fw.write(hrac.getInv()[1].getNazev());
+            for (int i =0;i<mistnosti.length;i++){
+                if (mistnosti[i].getPredmet()!=null) {
+                    fw.write(mistnosti[i].getPredmet().getNazev());
+                } else {
+                    fw.write("null");
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
