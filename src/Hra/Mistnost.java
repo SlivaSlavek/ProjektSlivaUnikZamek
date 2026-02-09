@@ -10,6 +10,7 @@ public class Mistnost {
     private NPC npc;
     private boolean maTruhlu;
     private Predmet predmet;
+    private boolean truhlaOtevrena = false;
 
 
     //TODO Upravit toString
@@ -83,6 +84,14 @@ public class Mistnost {
     public Mistnost(boolean maPovolenySpawnNPC, boolean maTruhlu,ArrayList<Mistnost> sousedniMistnosti) {
         this.maPovolenySpawnNPC = maPovolenySpawnNPC;
         this.maTruhlu = maTruhlu;
+    }
+
+    public boolean isTruhlaOtevrena() {
+        return truhlaOtevrena;
+    }
+
+    public void setTruhlaOtevrena(boolean truhlaOtevrena) {
+        this.truhlaOtevrena = truhlaOtevrena;
     }
 
     public Mistnost() {
