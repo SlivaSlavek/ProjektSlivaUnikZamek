@@ -2,6 +2,9 @@ package commands;
 
 import Hra.SystemHry;
 
+/**
+ * Vypisuje nápovědu.
+ */
 public class Napoveda extends Prikaz{
     @Override
     public String provedeniPrikazu(String prikaz, SystemHry hra) {

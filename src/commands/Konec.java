@@ -2,6 +2,9 @@ package commands;
 
 import Hra.SystemHry;
 
+/**
+ * Příkaz konec řeší ukončení hry a případné uložení.
+ */
 public class Konec extends Prikaz{
     @Override
     public String provedeniPrikazu(String prikaz, SystemHry hra) {

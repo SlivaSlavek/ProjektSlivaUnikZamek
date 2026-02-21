@@ -2,6 +2,9 @@ package commands;
 
 import Hra.SystemHry;
 
+/**
+ * Příkaz jdi řeší pohyb hráče do jiných místností.
+ */
 public class Jdi extends Prikaz{
     @Override
     public String provedeniPrikazu(String prikaz, SystemHry hra) {

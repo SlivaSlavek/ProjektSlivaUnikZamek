@@ -4,6 +4,9 @@ import Hra.SystemHry;
 
 import java.util.Objects;
 
+/**
+ * Příkaz akce provádí akci, jako je otevření truhel či použití předmětů a řeší, pokud příkaz z nějakého důvodu nelze splnit.
+ */
 public class Akce extends Prikaz{
     @Override
     public String provedeniPrikazu(String prikaz, SystemHry hra) {
@@ -25,7 +28,7 @@ public class Akce extends Prikaz{
             if (prikaz.equals(hra.getMoznePredmety().get(1).getNazev().toLowerCase())) {
                 if (Objects.equals(hra.getDalsiUkol(), ukol2)){
                     if (Objects.equals(hra.getHrac().getInv()[0].getNazev().toLowerCase(), prikaz)){
-                        if (hra.getHrac().getInv()[1].getNazev()==hra.getMoznePredmety().get(0).getNazev()){
+                        if (Objects.equals(hra.getHrac().getInv()[1].getNazev(), hra.getMoznePredmety().get(0).getNazev())){
                             hra.setDalsiUkol(ukol3);
                             hra.getHrac().getInv()[0]=null;
                             return "Děkuji a gratuluji. " + ukol3;
@@ -33,7 +36,7 @@ public class Akce extends Prikaz{
                             return "Ještě ti chybí předmět " + hra.getMoznePredmety().get(0).getNazev() + ".";
                         }
                     } else if (Objects.equals(hra.getHrac().getInv()[1].getNazev().toLowerCase(), prikaz)) {
-                        if (hra.getHrac().getInv()[0].getNazev()==hra.getMoznePredmety().get(0).getNazev()){
+                        if (Objects.equals(hra.getHrac().getInv()[0].getNazev(), hra.getMoznePredmety().get(0).getNazev())){
                             hra.setDalsiUkol(ukol3);
                             hra.getHrac().getInv()[1]=null;
                             return "Děkuji a gratuluji. " + ukol3;

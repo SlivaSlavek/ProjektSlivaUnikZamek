@@ -4,6 +4,9 @@ import Hra.SystemHry;
 
 import java.util.Objects;
 
+/**
+ * S příkazem zahoď hráč vyhazuje předměty z inventáře pryč.
+ */
 public class Zahod extends Prikaz{
     @Override
     public String provedeniPrikazu(String prikaz, SystemHry hra) {

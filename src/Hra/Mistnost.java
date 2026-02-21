@@ -2,6 +2,9 @@ package Hra;
 
 import java.util.ArrayList;
 
+/**
+ * Třída místností.
+ */
 public class Mistnost {
     private String nazev;
     private String popis;

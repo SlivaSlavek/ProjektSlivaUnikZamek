@@ -2,6 +2,9 @@ package commands;
 
 import Hra.SystemHry;
 
+/**
+ * Příkaz mluv řeší mluvu s NPC. V případě, že hráč od NPC dosten úkol, řeší i to.
+ */
 public class Mluv extends Prikaz{
     @Override
     public String provedeniPrikazu(String prikaz, SystemHry hra) {

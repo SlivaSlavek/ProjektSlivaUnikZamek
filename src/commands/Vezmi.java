@@ -4,6 +4,9 @@ import Hra.SystemHry;
 
 import java.util.Objects;
 
+/**
+ * Pomocí příkazu vezmi hráč bere předměty do inventáře.
+ */
 public class Vezmi extends Prikaz{
     @Override
     public String provedeniPrikazu(String prikaz, SystemHry hra) {

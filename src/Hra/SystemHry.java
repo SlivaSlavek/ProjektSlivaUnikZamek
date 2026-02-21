@@ -5,6 +5,9 @@ import commands.*;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Hlavní třída. Obsahuje hlavní metody a vlastnosti pro funkčnost hry. Celá hra běží na věcech z této třídy.
+ */
 public class SystemHry {
     private Mistnost[] mistnosti = new Mistnost[8];
     private ArrayList<NPC> npccka = new ArrayList<>();
@@ -17,13 +20,18 @@ public class SystemHry {
     private boolean konec=false;
 
 
-
+    /**
+     * Metoda hraní obsahuje celou hru - vygeneruje vše a poté zahájí hlavní smyčku, co bude trvat až do konce.
+     */
     public void hrani(){
         vygenerujStartHry();
         hlavniLoop();
     }
 
 
+    /**
+     * Hlavní loop hry je smyčka, co celou hru opakuje dokola, dokud neskončí.
+     */
     private void hlavniLoop(){
         while (!isKonec()){
             provedPrikaz();
@@ -31,11 +39,18 @@ public class SystemHry {
     }
 
 
+    /**
+     * Metoda sloužící k vypisování.
+     * @param text Text, co se má vypsat
+     */
     public void vypis(String text){
         System.out.println(text);
     }
 
 
+    /**
+     * Zavolá metody pro vygenerování jednotlivých částí hry. Pokud existuje save, pak vyřeší s hráčem, zda hru chce nevou nebo uloženou.
+     */
     public void vygenerujStartHry(){
         vygenerujMistnosti();
         vygenerujNPC();
@@ -53,7 +68,9 @@ public class SystemHry {
     }
 
 
-
+    /**
+     * Metoda provede zavolání příkazu, co si napíše hráč, případně vyřeší, když je příkaz neplatný.
+     */
     public void provedPrikaz(){
         vlozPrikazyDoMapy();
         Scanner scanner = new Scanner(System.in);
@@ -82,6 +99,9 @@ public class SystemHry {
         mapaPrikazu.put("zahod",new Zahod());
     }
 
+    /**
+     * Metoda mění polohu pohyblivých NPC po místnostech.
+     */
     public void npcRotace(){
         Random random=new Random();
         odendejNPCZMistnosti();
@@ -97,6 +117,10 @@ public class SystemHry {
         }
     }
 
+    /**
+     * Metoda kontroluje a hleda NPC, co se mohou pohybovat.
+     * @return Vrací ArrayList NPC, co se mohou pohybovat.
+     */
     public ArrayList<NPC> nestatickychNPC(){
         ArrayList<NPC> pohyblivychNPC=null;
         for (int i=0;i<npccka.size();i++){
@@ -107,6 +131,9 @@ public class SystemHry {
         return pohyblivychNPC;
     }
 
+    /**
+     * Odstraní pohyblivá NPCčka z místností.
+     */
     public void odendejNPCZMistnosti(){
         for (int i =0;i< mistnosti.length;i++){
             if (mistnosti[i].getNpc().getPridelenaMistnost()==null){
@@ -115,6 +142,10 @@ public class SystemHry {
         }
     }
 
+    /**
+     * Hledá a kontroluje místnosti, kam mohou cestovat NPC.
+     * @return Navrací ArryList místností, kde se NPC mohou objevit.
+     */
     public ArrayList<Mistnost> misnostiProNPC(){
         ArrayList<Mistnost>msnsti=new ArrayList<>();
         for (int i=0;i<mistnosti.length;i++) {
@@ -125,6 +156,9 @@ public class SystemHry {
         return msnsti;
     }
 
+    /**
+     * Regeneruje předměty do místností.
+     */
     public void rozmistovaniPredmetu(){
         for (int i=0;i< mistnosti.length;i++){
             if (mistnosti[i].getPredmet()!=null) {
@@ -147,6 +181,9 @@ public class SystemHry {
         }
     }
 
+    /**
+     * Uloží aktuální stav hry do souboru ulozeni.txt, který při novém spuštění půjde načíst.
+     */
     public void ulozeniHry(){
         FileWriter fw = null;
         try {
@@ -180,6 +217,10 @@ public class SystemHry {
         }
     }
 
+    /**
+     * Kontroluje, zda je nějaké předchozí uložení hry.
+     * @return  navrací true pokud je nějaké uložení.
+     */
     private boolean jeSave(){
         FileReader fr = null;
         try {
@@ -199,6 +240,9 @@ public class SystemHry {
         return false;
     }
 
+    /**
+     * Načte uloženou hru.
+     */
     private void nacteniUlozeneHry(){
         FileReader fr = null;
         try {
@@ -257,9 +301,9 @@ public class SystemHry {
     }
 
 
-
-
-
+    /**
+     * Vygeneruje NPC ze souboru generatorNPC.txt.
+     */
     private void vygenerujNPC() {
         FileReader fr = null;
         try {
@@ -329,6 +373,9 @@ public class SystemHry {
         }
     }
 
+    /**
+     * Vygeneruje předměty ze souboru predmety.txt.
+     */
     private void vygenerujPredmety(){
         FileReader fr = null;
         try {
@@ -369,6 +416,9 @@ public class SystemHry {
         }
     }
 
+    /**
+     * Vygeneruje místnosti ze souboru mistnosti.txt.
+     */
     private void vygenerujMistnosti(){
         FileReader fr = null;
         try {

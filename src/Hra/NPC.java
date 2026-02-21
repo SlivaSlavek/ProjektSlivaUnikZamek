@@ -1,5 +1,8 @@
 package Hra;
 
+/**
+ * Třída nehratelných postav hry.
+ */
 public class NPC {
     private String jmeno;
     private String dialog;

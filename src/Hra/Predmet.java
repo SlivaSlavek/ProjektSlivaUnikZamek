@@ -1,5 +1,8 @@
 package Hra;
 
+/**
+ * Třída předmětů, co hráč například může brát do inventáře, či některé používat.
+ */
 public class Predmet {
     public String nazev;
     public boolean jenJednou;
