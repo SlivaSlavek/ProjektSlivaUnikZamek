@@ -6,6 +6,7 @@ import java.util.Objects;
 
 /**
  * Příkaz akce provádí akci, jako je otevření truhel či použití předmětů a řeší, pokud příkaz z nějakého důvodu nelze splnit.
+ * @author Slávek Slíva
  */
 public class Akce extends Prikaz{
     @Override

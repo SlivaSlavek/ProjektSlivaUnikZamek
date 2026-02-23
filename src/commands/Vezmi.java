@@ -6,6 +6,7 @@ import java.util.Objects;
 
 /**
  * Pomocí příkazu vezmi hráč bere předměty do inventáře.
+ * @author Slávek Slíva
  */
 public class Vezmi extends Prikaz{
     @Override

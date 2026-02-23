@@ -25,4 +25,3 @@ Do této chodby, plné pavučin a prachu, by nikdo nikdy dobrovolně nevkročil,
 Velmi důležitou místností je Čarodějova věž, kde se nachází čaroděj. Do místnosti se lze dostat pouze Dlouhou temnou chodbou. Místnost je staromódně vybavená a osvětlená krbem. V místnosti se nachází zamčené skříňky a šuplíky, ale čaroděj do nich nikoho nepustí.
 
 
-//TODO Upravit popisy místností

@@ -6,6 +6,7 @@ import java.util.Objects;
 
 /**
  * Příkaz mluv řeší mluvu s NPC. V případě, že hráč od NPC dosten úkol, řeší i to.
+ * @author Slávek Slíva
  */
 public class Mluv extends Prikaz{
     @Override

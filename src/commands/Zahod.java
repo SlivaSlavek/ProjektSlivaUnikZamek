@@ -6,6 +6,7 @@ import java.util.Objects;
 
 /**
  * S příkazem zahoď hráč vyhazuje předměty z inventáře pryč.
+ * @author Slávek Slíva
  */
 public class Zahod extends Prikaz{
     @Override

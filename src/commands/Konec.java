@@ -4,6 +4,7 @@ import Hra.SystemHry;
 
 /**
  * Příkaz konec řeší ukončení hry a případné uložení.
+ * @author Slávek Slíva
  */
 public class Konec extends Prikaz{
     @Override

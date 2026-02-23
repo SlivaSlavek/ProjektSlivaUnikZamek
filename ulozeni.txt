@@ -1,2 +1,16 @@
---V tomto souboru nic neupravovat--
+--V tomto souboru nic neupravovat, pouze pro smazání uložení změntě na 2. řádku ´´uloženo´´ na ´´neuloženo´´ (dělejte například u změn ve vstupních souborech)--
 neulozeno
+Jdi najít Čaroděj do Čarodějova věž.
+Rytířský sál
+false
+true
+Starý čarovný lexikon
+null
+null
+null
+Staré noviny
+null
+Staré noviny
+Staré noviny
+null
+null

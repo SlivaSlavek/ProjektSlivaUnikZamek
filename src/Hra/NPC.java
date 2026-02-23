@@ -2,6 +2,7 @@ package Hra;
 
 /**
  * Třída nehratelných postav hry.
+ * @author Slávek Slíva
  */
 public class NPC {
     private String jmeno;
@@ -32,13 +33,8 @@ public class NPC {
         this.pridelenaMistnost = pridelenaMistnost;
     }
 
-    //TODO Upravit toString
     @Override
     public String toString() {
-        return "Hra.NPC{" +
-                "jmeno='" + jmeno + '\'' +
-                ", dialog='" + dialog + '\'' +
-                ", pridelenaMistnost=" + pridelenaMistnost +
-                '}';
+        return jmeno;
     }
 }

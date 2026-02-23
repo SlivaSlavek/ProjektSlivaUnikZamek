@@ -1,4 +1,4 @@
-Zde se generují předměty. Při dodržení formátu jich může být neomezené množství druhů... První a druhý jsou ty, co hráč musí povinně najít. Formát: Název MůžeBytJenJednou(boolean)   //TODO Dopsat více pravidel pro tvorbu predmetu + jich přidat více
+Zde se generují předměty. Při dodržení formátu jich může být neomezené množství druhů... První a druhý jsou ty, co hráč musí povinně najít. Formát: Název, MůžeBytJenJednou(boolean), 2 nezapočítané řádky. (první název začíná řádkem 4)  Pokud bude formát poškozen a ztracen, více lze zjistit v originále na https://github.com/SlivaSlavek/ProjektSlivaUnikZamek.
 
 1:
 Velký starý klíč

@@ -1,8 +1,8 @@
-Zde se generují Hra.NPC. Při dodržení formátu jich může být neomezené množství... Formáte: Jméno Řeč pridelenaMistnost(=je statické, název brát z mistnosti.txt; pokud není, tak null)   //TODO Dopsat více pravidel pro tvorbu Hra.NPC + řeč postav (dialogy)
+Zde se generují NPC. Při dodržení formátu jich může být neomezené množství... Formát: Jméno Řeč pridelenaMistnost(=je statické, název brát z mistnosti.txt; pokud není=NPC se pohybuje, tak null), následně 2 prázné řádky, co se nepočítají. (uplný začátek prvního jména je na řádku 4) Formátu se držte, jak je původní soubor, lze případně najít na https://github.com/SlivaSlavek/ProjektSlivaUnikZamek.
 
 1:
 Čaroděj
-Vítám tě tady, potřebuju pomoci.....
+"Vítám tě tady, potřebuju pomoci. Přines mi Starý čarovný lexikon a najdi Velký starý klíč — oboje je ukryto někde na tomto zámku. Když uspěješ, přeruším kouzlo a umožním ti, abys pak sám mohl odejít."
 Čarodějova věž
 
 2:

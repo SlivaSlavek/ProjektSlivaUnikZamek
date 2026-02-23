@@ -7,6 +7,7 @@ import java.util.*;
 
 /**
  * Hlavní třída. Obsahuje hlavní metody a vlastnosti pro funkčnost hry. Celá hra běží na věcech z této třídy.
+ * @author Slávek Slíva
  */
 public class SystemHry {
     private Mistnost[] mistnosti = new Mistnost[8];
@@ -52,17 +53,35 @@ public class SystemHry {
      * Zavolá metody pro vygenerování jednotlivých částí hry. Pokud existuje save, pak vyřeší s hráčem, zda hru chce nevou nebo uloženou.
      */
     public void vygenerujStartHry(){
+        vypis("Vítejte ve hře!");
+        vypis("Načítání...");
         vygenerujMistnosti();
         vygenerujNPC();
         vygenerujPredmety();
         if (jeSave()) {
             Scanner scannerr=new Scanner(System.in);
-            vypis("Bylo nalezeno uložení hry. Pokud chcete novou hru, napiště 0 jinak jakékoliv jiné ČÍSLO pro načtění uložené hry.");
-            if (scannerr.nextInt()!=0){
+            vypis("Bylo nalezeno uložení hry. Pokud chcete novou hru, napiště 0 jinak jakékoliv jiné ČÍSLO či něco pro načtění uložené hry.");
+            if (!Objects.equals(scannerr.nextLine(), "0")){
                 nacteniUlozeneHry();
                 return;
             }
         }
+        vypis("\n\nÚnik z prokletého zámku\n\n" +
+                "Hlavní postava, obyčejný mladík, Pepa Bojka se jednoho dne vydal do temného\n" +
+                "lesa, cestou narazil na velký tmavý zámek. A protože byl člověk zvídavý, vešel\n" +
+                "dovnitř. Jen co vešel dovnitř, dveře se za ním zabouchly a zamkly.\n" +
+                "Pepa se ne a ne dostat ven, když v tom uslyší za svými zády zakvákání. Byla tam\n" +
+                "malá ropucha, co opakovala stále dokola ”Čaroděj je ve věži, kváky kvák.”\n" +
+                "V Prokletém zámku bude hrdina moci projít několik místností, až narazí na\n" +
+                "Temnou věž. V Temné věži se ukrývá čaroděj, kterému tento Prokletý zámek\n" +
+                "patří. Protože má dobrou náladu, řekne, jak se lze dostat pryč. Hlavní dveře se\n" +
+                "musí otevřít velkým starým klíčem, avšak to nestačí, protože čaroděj musí ještě\n" +
+                "přerušit kouzlo, které zabraňuje lidem utéci. Přeruší to pouze tehdy, když mu\n" +
+                "Pepa donese Starý čarovný lexikon, který je schovaný na zámku.\n" +
+                "Předměty jsou schované na zámku, neznámo kde, ale při prohledávání truhel se\n" +
+                "jistě brzy objeví. Cílem hry je utéct ze Strašidelného zámku, tak že hráč odemkne hlavní dveře\n" +
+                "Velkým starým klíčem, který je skrytý na zámku.\n\n" +
+                "Hra začíná....   (pro zobrazení příkazů napiště ´´napoveda´´ (takto bez diakritiky jen to slovo)) \n");
         hrac.setPoloha(mistnosti[0]);
         rozmistovaniPredmetu();
     }
@@ -189,30 +208,54 @@ public class SystemHry {
      * Uloží aktuální stav hry do souboru ulozeni.txt, který při novém spuštění půjde načíst.
      */
     public void ulozeniHry(){
-        FileWriter fw = null;
+        FileWriter fw0 = null;
+
         try {
-            fw = new FileWriter("ulozeni.txt");
+            fw0 = new FileWriter("ulozeni.txt");
+            BufferedWriter fw = new BufferedWriter(fw0);
             fw.write("--V tomto souboru nic neupravovat, pouze pro smazání uložení změntě na 2. řádku ´´uloženo´´ na ´´neuloženo´´ (dělejte například u změn ve vstupních souborech)--");
+            fw.newLine();
             fw.write("ulozeno");
+            fw.newLine();
             fw.write(dalsiUkol);
+            fw.newLine();
             fw.write(hrac.getPoloha().getNazev());
+            fw.newLine();
             if (jeMainPredmet1){
                 fw.write("true");
+                fw.newLine();
             } else{
                 fw.write("false");
+                fw.newLine();
             }
             if (jeMainPredmet2){
                 fw.write("true");
+                fw.newLine();
             } else{
                 fw.write("false");
+                fw.newLine();
             }
-            fw.write(hrac.getInv()[0].getNazev());
-            fw.write(hrac.getInv()[1].getNazev());
+            if (hrac.getInv()[0]!=null) {
+                fw.write(hrac.getInv()[0].getNazev());
+                fw.newLine();
+            } else {
+                fw.write("null");
+                fw.newLine();
+            }
+            if (hrac.getInv()[1]!=null) {
+                fw.write(hrac.getInv()[1].getNazev());
+                fw.newLine();
+            } else {
+                fw.write("null");
+                fw.newLine();
+            }
             for (int i =0;i<mistnosti.length;i++){
                 if (mistnosti[i].getPredmet()!=null) {
                     fw.write(mistnosti[i].getPredmet().getNazev());
+                    fw.newLine();
                 } else {
                     fw.write("null");
+                    fw.newLine();
                 }
             }
             fw.close();
@@ -292,7 +335,7 @@ public class SystemHry {
                 }
                 for (int i=0;i<mistnosti.length;i++){
                     String predmett=br.readLine();
-                    for (int j=0;i<moznePredmety.size();j++){
+                    for (int j=0;j<moznePredmety.size();j++){
                         if (Objects.equals(moznePredmety.get(j).getNazev(), predmett)){
                             mistnosti[i].setPredmet(moznePredmety.get(j));
                         }

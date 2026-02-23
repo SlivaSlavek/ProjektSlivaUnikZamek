@@ -4,6 +4,7 @@ import Hra.SystemHry;
 
 /**
  * Příkaz prohledej vypíše popis místnosti.
+ * @author Slávek Slíva
  */
 public class Prohledej extends Prikaz{
     @Override

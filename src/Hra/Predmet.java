@@ -2,6 +2,7 @@ package Hra;
 
 /**
  * Třída předmětů, co hráč například může brát do inventáře, či některé používat.
+ * @author Slávek Slíva
  */
 public class Predmet {
     public String nazev;
@@ -28,12 +29,8 @@ public class Predmet {
         this.jenJednou = jenJednou;
     }
 
-    //TODO Upravit toString
     @Override
     public String toString() {
-        return "Hra.Predmet{" +
-                "nazev='" + nazev + '\'' +
-                ", jenJednou=" + jenJednou +
-                '}';
+        return nazev;
     }
 }

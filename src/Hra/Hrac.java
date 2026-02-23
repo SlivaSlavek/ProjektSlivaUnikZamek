@@ -2,6 +2,7 @@ package Hra;
 
 /**
  * Třída místností.
+ * @author Slávek Slíva
  */
 public class Hrac {
     private String jmeno;

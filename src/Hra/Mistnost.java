@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Třída místností.
+ * @author Slávek Slíva
  */
 public class Mistnost {
     private String nazev;
@@ -16,16 +17,25 @@ public class Mistnost {
     private boolean truhlaOtevrena = false;
 
 
-    //TODO Upravit toString
     @Override
     public String toString() {
-        return "Hra.Mistnost{" +
-                "nazev='" + nazev + '\'' +
-                ", popis='" + popis + '\'' +
-                ", maPovolenySpawnNPC=" + maPovolenySpawnNPC +
-                ", maTruhlu=" + maTruhlu +
-                ", predmet=" + predmet +
-                '}';
+        String sousediciMistnostiJmena = "";
+        for (int i=0;i<sousediciMistnosti.size();i++){
+            if(sousediciMistnostiJmena==""){
+                sousediciMistnostiJmena=sousediciMistnosti.get(i).getNazev();
+            } else {
+                sousediciMistnostiJmena = sousediciMistnostiJmena + "; " + sousediciMistnosti.get(i).getNazev();
+            }
+        }
+        if (maTruhlu && getNpc()!=null){
+            return nazev + ", v místnosti je truhla a npc " + npc + ". Sousedící místnosti: " + sousediciMistnostiJmena;
+        } else if (maTruhlu&&getNpc()==null){
+            return nazev + ", v místnosti je truhla. Sousedící místnosti: " + sousediciMistnostiJmena;
+        } else if (!maTruhlu&&getNpc()!=null) {
+            return nazev + ", v místnosti je npc " + npc + ". Sousedící místnosti: " + sousediciMistnostiJmena;
+        } else {
+            return nazev + ", v místnosti není nic zajímavého. Sousedící místnosti: " + sousediciMistnostiJmena;
+        }
     }
 
     public String getNazev() {
