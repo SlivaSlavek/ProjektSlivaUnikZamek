@@ -109,4 +109,7 @@ public class Mistnost {
 
     public Mistnost() {
     }
+
+    public Mistnost(String mistnost0) {
+    }
 }

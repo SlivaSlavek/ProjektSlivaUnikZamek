@@ -542,4 +542,15 @@ public class SystemHry {
     public void setJeMainPredmet2(boolean jeMainPredmet2) {
         this.jeMainPredmet2 = jeMainPredmet2;
     }
+
+    public void setHrac(Hrac hrac) {
+        this.hrac = hrac;
+    }
+
+    public void setMistnosti(Mistnost[] mistnosti) {
+        this.mistnosti = mistnosti;
+    }
+
+    public void setMoznePredmety(List<String> predmety) {
+    }
 }

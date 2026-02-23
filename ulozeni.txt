@@ -1,16 +1,16 @@
 --V tomto souboru nic neupravovat, pouze pro smazání uložení změntě na 2. řádku ´´uloženo´´ na ´´neuloženo´´ (dělejte například u změn ve vstupních souborech)--
-neulozeno
-Jdi najít Čaroděj do Čarodějova věž.
-Rytířský sál
-false
+ulozeno
+Zatím nemáte žádný úkol.
+Vstup
 true
+true
+null
+null
+null
+null
 Starý čarovný lexikon
-null
-null
-null
 Staré noviny
-null
-Staré noviny
+Velký starý klíč
 Staré noviny
 null
 null
