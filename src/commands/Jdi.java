@@ -13,7 +13,7 @@ public class Jdi extends Prikaz{
                 hra.getHrac().setPoloha(hra.getHrac().getPoloha().getSousediciMistnosti().get(i));
                 hra.npcRotace();
                 hra.rozmistovaniPredmetu();
-                return "Hráč přešel do místnosti " + hra.getHrac().getPoloha().getNazev();
+                return "Hráč přešel do místnosti " + hra.getHrac().getPoloha().getNazev() + ".";
             }
         }
         return "Místnost " + prikaz + " neexistuje nebo nesousedí s místností " + hra.getHrac().getPoloha().getNazev() + ", ve které se nyní hráč nachází.";

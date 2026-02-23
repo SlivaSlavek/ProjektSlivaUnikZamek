@@ -2,6 +2,8 @@ package commands;
 
 import Hra.SystemHry;
 
+import java.util.Objects;
+
 /**
  * Příkaz mluv řeší mluvu s NPC. V případě, že hráč od NPC dosten úkol, řeší i to.
  */
@@ -13,12 +15,12 @@ public class Mluv extends Prikaz{
             String ukol2 = "Nyní je potřeba přinést " + hra.getMoznePredmety().get(0) + " a " + hra.getMoznePredmety().get(1) + " pro " + hra.getMistnosti()[7].getNpc().getJmeno() + ".";
             String ukol3 = "Nyní jdi směrem na " + hra.getMistnosti()[0].getNazev() + " a tam použij předmět, díky kterému budeš moci odejít.";
             if (hra.getHrac().getPoloha()==hra.getMistnosti()[0]){
-                if (hra.getDalsiUkol()!=ukol2||hra.getDalsiUkol()!=ukol3){
+                if (!Objects.equals(hra.getDalsiUkol(), ukol2) && !Objects.equals(hra.getDalsiUkol(), ukol3)){
                     hra.setDalsiUkol(ukol1);
                 }
             }
             if (hra.getHrac().getPoloha()==hra.getMistnosti()[7]){
-                if (hra.getDalsiUkol()!=ukol3) {
+                if (!Objects.equals(hra.getDalsiUkol(), ukol3)) {
                     hra.setDalsiUkol(ukol2);
                 }
             }

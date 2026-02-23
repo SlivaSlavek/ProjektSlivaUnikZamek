@@ -122,7 +122,7 @@ public class SystemHry {
      * @return Vrací ArrayList NPC, co se mohou pohybovat.
      */
     public ArrayList<NPC> nestatickychNPC(){
-        ArrayList<NPC> pohyblivychNPC=null;
+        ArrayList<NPC> pohyblivychNPC=new ArrayList<>();
         for (int i=0;i<npccka.size();i++){
             if (npccka.get(i).getPridelenaMistnost()==null){
                 pohyblivychNPC.add(npccka.get(i));
@@ -136,8 +136,10 @@ public class SystemHry {
      */
     public void odendejNPCZMistnosti(){
         for (int i =0;i< mistnosti.length;i++){
-            if (mistnosti[i].getNpc().getPridelenaMistnost()==null){
-                mistnosti[i].setNpc(null);
+            if (mistnosti[i].getNpc()!=null) {
+                if (mistnosti[i].getNpc().getPridelenaMistnost() == null) {
+                    mistnosti[i].setNpc(null);
+                }
             }
         }
     }
@@ -161,22 +163,24 @@ public class SystemHry {
      */
     public void rozmistovaniPredmetu(){
         for (int i=0;i< mistnosti.length;i++){
-            if (mistnosti[i].getPredmet()!=null) {
-                Random random = new Random();
-                int cislo= random.nextInt(0,moznePredmety.size()-1);
-                if (isJeMainPredmet1()&&cislo==0){
-                    cislo= random.nextInt(1, moznePredmety.size()-1);
+            if (mistnosti[i].isMaTruhlu()) {
+                if (mistnosti[i].getPredmet() == null) {
+                    Random random = new Random();
+                    int cislo = random.nextInt(0, moznePredmety.size() - 1);
+                    if (isJeMainPredmet1() && cislo == 0) {
+                        cislo = random.nextInt(1, moznePredmety.size() - 1);
+                    }
+                    if (isJeMainPredmet2() && cislo == 1) {
+                        cislo = random.nextInt(2, moznePredmety.size() - 1);
+                    }
+                    if (cislo == 0) {
+                        jeMainPredmet1 = true;
+                    } else if (cislo == 1) {
+                        jeMainPredmet2 = true;
+                    }
+                    mistnosti[i].setPredmet(moznePredmety.get(cislo));
+                    mistnosti[i].setTruhlaOtevrena(false);
                 }
-                if (isJeMainPredmet2()&&cislo==1){
-                    cislo= random.nextInt(2, moznePredmety.size()-1);
-                }
-                if (cislo==0){
-                    jeMainPredmet1=true;
-                } else if (cislo==1) {
-                    jeMainPredmet2=true;
-                }
-                mistnosti[i].setPredmet(moznePredmety.get(cislo));
-                mistnosti[i].setTruhlaOtevrena(false);
             }
         }
     }
