@@ -98,6 +98,7 @@ public class SystemHry {
             napsano=napsano+"  ";
         }
         String[] prikaz = napsano.split(" ",2);
+        prikaz[0]=prikaz[0].toLowerCase();
         if(mapaPrikazu.containsKey(prikaz[0].toLowerCase())){
             vypis(mapaPrikazu.get(prikaz[0]).provedeniPrikazu(prikaz[1], this));
         } else{
@@ -211,7 +212,7 @@ public class SystemHry {
         FileWriter fw0 = null;
 
         try {
-            fw0 = new FileWriter("/resources/ulozeni.txt");
+            fw0 = new FileWriter("resources/ulozeni.txt");
             BufferedWriter fw = new BufferedWriter(fw0);
             fw.write("--V tomto souboru nic neupravovat, pouze pro smazání uložení změntě na 2. řádku ´´uloženo´´ na ´´neuloženo´´ (dělejte například u změn ve vstupních souborech)--");
             fw.newLine();
@@ -271,7 +272,7 @@ public class SystemHry {
     private boolean jeSave(){
         FileReader fr = null;
         try {
-            fr=new FileReader("/resources/ulozeni.txt");
+            fr=new FileReader("resources/ulozeni.txt");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -293,7 +294,7 @@ public class SystemHry {
     private void nacteniUlozeneHry(){
         FileReader fr = null;
         try {
-            fr=new FileReader("/resources/ulozeni.txt");
+            fr=new FileReader("resources/ulozeni.txt");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -354,7 +355,7 @@ public class SystemHry {
     private void vygenerujNPC() {
         FileReader fr = null;
         try {
-            fr = new FileReader("/resources/generatorNPC.txt");
+            fr = new FileReader("resources/generatorNPC.txt");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -426,7 +427,7 @@ public class SystemHry {
     private void vygenerujPredmety(){
         FileReader fr = null;
         try {
-            fr = new FileReader("/resources/predmety.txt");
+            fr = new FileReader("resources/predmety.txt");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -469,7 +470,7 @@ public class SystemHry {
     private void vygenerujMistnosti(){
         FileReader fr = null;
         try {
-            fr = new FileReader("/resources/mistnosti.txt");
+            fr = new FileReader("resources/mistnosti.txt");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
